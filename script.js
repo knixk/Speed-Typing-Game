@@ -32,11 +32,17 @@ quoteInputElement.addEventListener("input", () => {
 function getRandomQuote() {
   return fetch(RANDOM_QUOTE_API_URL)
     .then((response) => response.json())
-    .then((data) => data.content);
+    .then((data) => {
+      console.log(data);
+      return data.content
+    });
 }
 
+const dq = `Hello can you type out this real quick for me to see if it really works or not`;
+
 async function renderNewQuote() {
-  const quote = await getRandomQuote();
+  // const quote = await getRandomQuote();
+  const quote = dq;
   quoteDisplayElement.innerText = "";
   quote.split("").forEach((character) => {
     const characterSpan = document.createElement("span");
